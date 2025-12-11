@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func mainKedua() {
 	fmt.Print("Masukkan nomor hari (1-7): ")
 	var day int
 	fmt.Scanln(&day)

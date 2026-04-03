@@ -3,8 +3,10 @@
 🔥 Roadmap Backend Go (Praktis & Real)
 
 Step 1 — Basic
-
+-input output
 -Variable, struct, function
+
+Step 1.5 - Another Basic
 -Pointer
 -Interface
 -Goroutine & channel (basic)

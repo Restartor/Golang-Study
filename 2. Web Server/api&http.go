@@ -18,7 +18,7 @@ type User struct{
 //  biasanya digunakan untuk membuat aplikasi web atau mobile yang membutuhkan 
 // backend untuk menyimpan dan mengelola data pengguna.
 
-func dapatkanUser(w http.ResponseWriter, r *http.Request){
+func dapatkanUser(w http.ResponseWriter, r *http.Request){ // Fungsi handler untuk menangani permintaan HTTP pada endpoint /products
 	dataorang := []User{
 		{
 			ID:    1,
@@ -35,7 +35,7 @@ func dapatkanUser(w http.ResponseWriter, r *http.Request){
 }
 
 func main(){
-	http.HandleFunc("/products", dapatkanUser)
+	http.HandleFunc("/products", dapatkanUser) // r adalah objek request yang berisi informasi tentang permintaan HTTP yang diterima,
 	fmt.Println("Server berjalan di http://localhost:8080")
 	http.ListenAndServe(":8080", nil) // Menjalankan server HTTP pada port 8080
 }

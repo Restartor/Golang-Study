@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func loop(){
 	for i := 0; i < 5; i++{ // perulangan for dengan inisialisasi i=0, kondisi i<5, dan increment i++

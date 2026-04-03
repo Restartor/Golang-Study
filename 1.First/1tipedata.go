@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func tipedata() {
     var name string = "Rafi"
     age := 20
     height := 170.5

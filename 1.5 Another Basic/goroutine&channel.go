@@ -13,3 +13,10 @@ func gowork(){
 	result := <-ch // Menerima pesan dari channel
 	fmt.Println(result) // Output: Hello from worker!
 }
+
+// Penjelasan:
+// goroutine adalah fungsi yang dapat berjalan secara bersamaan dengan fungsi lainnya. 
+// Dalam contoh di atas, fungsi worker dijalankan sebagai goroutine 
+// menggunakan kata kunci "go". 
+// Channel digunakan untuk berkomunikasi antara goroutine, 
+// di mana worker mengirim pesan ke channel dan gowork menerima pesan tersebut.

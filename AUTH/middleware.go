@@ -75,3 +75,9 @@ func InitUserTable() {
 
 	log.Println("User table sudah ready")
 }
+
+// JANGAN LUPA BUAT LIMITERATE UNTUK ENDPOINT LOGIN DAN REGISTRASI DI PRODUCTION UNTUK MENCEGAH BRUTE FORCE ATTACK!
+// KITA BISA GUNAKAN PACKAGE SEPERTI github.com/ulule/limiter UNTUK IMPLEMENTASI RATE LIMITER DI GIN.
+
+// untuk sementara kita gunakan golang.org/x/time/rate untuk implementasi sederhana di handler login dan register,
+// tapi untuk implementasi yang lebih lengkap dan mudah digunakan, sebaiknya gunakan package limiter yang sudah ada.

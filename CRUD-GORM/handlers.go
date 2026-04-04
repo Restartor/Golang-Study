@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -10,7 +11,20 @@ import (
 func CreateProduct(c *gin.Context) {
 	var product Product
 	if err := c.ShouldBindJSON(&product); err != nil{
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Data tidak valid"})
+		respondError(c, http.StatusBadRequest, "invalid input!")
+		return
+	}
+		
+// validasi
+	if err := ValidateStruct(product); err != nil{
+		respondError(c, http.StatusBadRequest, "invalid input!")
+		return
+	}
+
+// jika error dalam server saat menyimpan data
+	if err := DB.Create(&product).Error; err != nil{
+		log.Printf("CreateProduct error: %v", err)// Log error untuk debugging
+		respondError(c, http.StatusInternalServerError, "failed to create product, server issues")
 		return
 	}
 
@@ -31,7 +45,7 @@ func GetProductsByID(c *gin.Context){
 
 	id := c.Param("id")
 	if err := DB.First(&product, id).Error; err != nil{
-		c.JSON(http.StatusNotFound, gin.H{"error":"product not found"})
+		respondError(c, http.StatusNotFound, "product not found")
 		return
 
 	}
@@ -44,7 +58,7 @@ func UpdateProduct(c *gin.Context){
 	id := c.Param("id")
 
 	if err := DB.First(&product, id).Error; err != nil{
-		c.JSON(http.StatusNotFound, gin.H{"error":"product not found"})
+		respondError(c, http.StatusNotFound, "product not found")
 		return
 	}
 	c.ShouldBindJSON(&product)
@@ -58,7 +72,7 @@ func DeleteProduct(c *gin.Context){
 	id := c.Param("id")
 
 	if err := DB.First(&product, id).Error; err != nil{
-		c.JSON(http.StatusNotFound, gin.H{"error":"product not found"})
+		respondError(c, http.StatusNotFound, "product not found")
 		return
 	}
 	DB.Delete(&product)

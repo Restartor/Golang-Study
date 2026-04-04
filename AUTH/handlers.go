@@ -5,8 +5,6 @@ import (
 	"gorm.io/gorm"
 )
 
-var DB *gorm.DB // Variabel global untuk database connection, pastikan sudah diinisialisasi di main.go
-
 // ============== HANDLERS ==============
 
 // Register handler untuk registrasi user baru
